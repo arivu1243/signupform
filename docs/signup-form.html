@@ -42,14 +42,14 @@
 	
 </head>
 <body onload="createCaptcha()">
-  <form action="mailto:arivu1243@gmail.com" method="POST" onsubmit="return validateCaptcha()">
+  <form method="POST" onsubmit="return validateCaptcha()">
     <div class="container">
       <div style="text-align:center">
         <h1>Sign Up Form</h1>
         <p>Please fill the details to create an account.</p>
       </div>
       <hr>
-	  <div class="form-container">
+      <div class="form-container">
         <label for="username">Username</label>
         <input type="text" placeholder="Enter Username" name="username" id="username" required>
 
@@ -66,8 +66,7 @@
         </div>
         <hr>
         <button type="submit" class="registerbtn" >Register</button>
-        <input type="button" value="Send Email" onclick="sendEmail()"/>
-	  </div>
+      </div>
     </div>
   </form>
 <script type="text/javascript">
@@ -104,12 +103,12 @@
     createCaptcha();
   }
   }
-/*$('.registerbtn').on('click', function(e) {
+$('.registerbtn').on('click', function(e) {
   e.preventDefault();
   subject = $('#subject').val();
   body = $('#body').val();
   window.location = "mailto:arivu1243@gmail.com?subject=" + subject + "&body=" + body;
-});*/
+});
 </script>            
 </body>
 </html>
