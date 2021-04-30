@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup Form</title>
+  <style>
+  * {box-sizing: border-box}
+  .container {padding: 16px;}
+  .form-container { max-width: 768px; margin: auto;}
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  .registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  .registerbtn:hover {
+    opacity:1;
+  }
+  canvas{
+  pointer-events:none;
+}
+</style>
+</head>
+<body onload="createCaptcha()">
+  <form action="mail.php" method="POST" onsubmit="return validateCaptcha()">
+    <div class="container">
+      <div style="text-align:center">
+        <h1>Sign Up Form</h1>
+        <p>Please fill the details to create an account.</p>
+	  </div>
+      <hr>
+	  <div class="form-container">
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+        <label for="psw">Password</label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+		
+		<label for="que">Security Question: What is 2+2?</label>
+        <input type="text" placeholder="Security Answer" name="ans" id="ans" required>
+
+		<div id="captcha">
+        </div>
+		<input type="text" placeholder="Captcha" id="captchaTextBox"/>
+        <div id="captcha-valid">
+        </div>
+        <hr>
+        <button type="submit" class="registerbtn" >Register</button>
+	  </div>
+    </div>
+  </form>
+<script type="text/javascript">
+ var code;
+ function createCaptcha() {
+  document.getElementById('captcha').innerHTML = "";
+  var charsArray ="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+  var lengthOtp = 6;
+  var captcha = [];
+  for (var i = 0; i < lengthOtp; i++) {
+    var index = Math.floor(Math.random() * charsArray.length + 1); 
+    if (captcha.indexOf(charsArray[index]) == -1)
+      captcha.push(charsArray[index]);
+    else i--;
+  }
+  var canv = document.createElement("canvas");
+  canv.id = "captcha";
+  canv.width = 100;
+  canv.height = 50;
+  var ctx = canv.getContext("2d");
+  ctx.font = "25px Georgia";
+  ctx.strokeText(captcha.join(""), 0, 30);
+  code = captcha.join("");
+  document.getElementById("captcha").appendChild(canv); 
+  }
+  function validateCaptcha() {
+  debugger
+  if (document.getElementById("captchaTextBox").value == code) {
+    alert("Valid Captcha")
+	return true;
+  }else{
+    alert("Invalid Captcha. try Again");
+   return false;
+    createCaptcha();
+  }
+  }
+</script>            
+</body>
+</html>
