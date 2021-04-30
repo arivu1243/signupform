@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
   $mail->Port       = 587;
   $mail->Host       = "smtp.gmail.com";
   $mail->Username   = "arivu1243@gmail.com";
-  /*$mail->Password   = "your-mail-password";*/
+  $mail->Password   = "Silence@93";
 
   $mail->IsHTML(true);
   $mail->AddAddress("arivu1243@gmail.com", "recipient-name");  
