@@ -42,7 +42,7 @@
 	
 </head>
 <body onload="createCaptcha()">
-  <form method="GET" onsubmit="return validateCaptcha()">
+  <form action="mail.php" method="POST" onsubmit="return validateCaptcha()">
     <div class="container">
       <div style="text-align:center">
         <h1>Sign Up Form</h1>
@@ -56,12 +56,12 @@
         <label for="psw">Password</label>
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 		
-		<label for="que">Security Question: What is 2+2?</label>
+	<label for="que">Security Question: What is 2+2?</label>
         <input type="text" placeholder="Security Answer" name="ans" id="ans" required>
 
-		<div id="captcha">
+	<div id="captcha">
         </div>
-		<input type="text" placeholder="Captcha" id="captchaTextBox"/>
+	<input type="text" placeholder="Captcha" id="captchaTextBox"/>
         <div id="captcha-valid">
         </div>
         <hr>
@@ -103,12 +103,6 @@
     createCaptcha();
   }
   }
-$('.registerbtn').on('click', function(e) {
-  e.preventDefault();
-  subject = $('#subject').val();
-  body = $('#body').val();
-  window.location = "mailto:arivu1243@gmail.com?subject=" + subject + "&body=" + body;
-});
 </script>            
 </body>
 </html>
